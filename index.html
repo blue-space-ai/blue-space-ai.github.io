@@ -1,31 +1,131 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang='en-GB'>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>Blue Space AI Limited</title>
-<style>body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6;color:#1a1a1a;background:#fff}
-main{max-width:46rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
-h1{font-size:1.9rem;line-height:1.25;margin:0 0 .5rem}h2{font-size:1.25rem;margin:2rem 0 .5rem}
-a{color:#0b4f8a}a:focus{outline:3px solid #ffbf47;outline-offset:2px}
-table{border-collapse:collapse;width:100%;font-size:.95rem;margin:1rem 0}th,td{border:1px solid #c8c8c8;padding:.5rem;text-align:left;vertical-align:top}th{background:#f3f3f3}
-dl{margin:1rem 0}dt{font-weight:600;margin-top:.75rem}dd{margin:0}
-.meta{color:#555}footer{margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;color:#555;font-size:.9rem}</style>
+<meta name='description' content='Blue Space AI Limited builds Brick House, a record and coordination system for neonatal transport services and neonatal units.'>
+<meta name='theme-color' content='#0c2352'>
+<meta name='referrer' content='no-referrer'>
+<link rel='icon' href='icon.svg' type='image/svg+xml'>
+<style>@font-face{font-family:'Geist Mono';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/GeistMono-Variable.woff2) format('woff2')}
+@font-face{font-family:'Geist';font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/Geist-Variable.woff2) format('woff2')}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070e1b;--surface:#0f1828;--surface-2:#192437;--line:#283347;--line-strong:#687c98;--ink:#e5ecf5;--ink-2:#a5b2c4;--accent-ink:#8bb9fd;--focus:#95c0ff;--company-ink:#e5ecf5;--appbar-bg:#0c2352;--appbar-ink:#e5ecf5;--appbar-ink-2:#bccce2;--appbar-line:#314c7e;--display:'Geist','Geist Mono',system-ui,sans-serif;--text:'Geist Mono',ui-monospace,'Cascadia Mono',Consolas,Menlo,monospace;--page:1160px;color-scheme:dark}
+@supports (color:oklch(0% 0 0)){:root{--bg:oklch(16.5% .03 262);--surface:oklch(21% .035 262);--surface-2:oklch(26% .04 262);--line:oklch(32% .04 262);--line-strong:oklch(58% .05 258);--ink:oklch(94% .015 255);--ink-2:oklch(76% .03 255);--accent-ink:oklch(78% .11 258);--focus:oklch(80% .101 258);--company-ink:oklch(94% .015 255);--appbar-bg:oklch(27% .09 262);--appbar-ink:oklch(94% .015 255);--appbar-ink-2:oklch(84% .035 255);--appbar-line:oklch(42% .09 262)}}
+html{background:var(--bg);color:var(--ink);font-family:var(--text);font-size:14.5px;line-height:1.6;font-variant-ligatures:none;font-variant-numeric:slashed-zero;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:24px}
+body{min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+a{color:var(--accent-ink);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+h1,h2{font-family:var(--display);font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+h1 .n,h2 .n{font-family:var(--text);letter-spacing:0}
+.skip{position:absolute;left:24px;top:-100px;z-index:2;display:inline-flex;align-items:center;min-height:46px;padding:0 16px;background:var(--ink);color:var(--bg);font-weight:600;text-decoration:none}
+.skip:focus{top:3px}
+.in{width:100%;max-width:var(--page);margin:0 auto;padding-left:24px;padding-right:24px}
+.wall{background:var(--appbar-bg);color:var(--appbar-ink)}
+.bar{border-bottom:1px solid var(--appbar-line)}
+.bar .in{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:52px}
+.bar nav{display:flex;gap:24px}
+.bar nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--appbar-ink);text-decoration:none}
+.bar nav a:hover,.bar nav a[aria-current]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.line{display:inline-flex;align-items:center;min-height:44px;color:var(--appbar-ink);text-decoration:none;white-space:nowrap}
+.line svg{flex:none;width:29px;height:29px;margin-right:9px;fill:currentColor}
+.mark{font-weight:400;letter-spacing:.12em;margin-right:-.12em;white-space:nowrap}
+.mark b{font-weight:700}
+.hero .in{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:48px;min-height:min(72vh,720px);padding-top:96px;padding-bottom:64px}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.04}
+.hero .lede{margin-top:24px;max-width:640px;font-size:17px;color:var(--appbar-ink-2);text-wrap:pretty}
+.hero .lede b{font-weight:400;color:var(--appbar-ink)}
+.hero .sym{align-self:start;width:clamp(120px,24vw,304px);height:auto;fill:var(--appbar-ink)}
+.course{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;padding-top:48px;padding-bottom:64px}
+.tile{display:flex;align-items:center;gap:12px;min-height:76px;padding:12px 24px;background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);font-size:17px;font-weight:600;text-decoration:none;min-width:0}
+.tile:hover{border-color:var(--accent-ink)}
+.tile .lab{min-width:0;overflow-wrap:anywhere}
+.tile small{display:block;font-size:12.5px;font-weight:400;color:var(--ink-2);line-height:1.3}
+.tic{flex:none;display:inline-grid;place-items:center;width:36px;height:36px;background:var(--surface-2);border:1px solid var(--line)}
+svg.i{flex:none;width:1.15em;height:1.15em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile>svg.i:last-child{margin-left:auto}
+.foot{border-top:1px solid var(--line)}
+.foot .in{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;padding-top:16px;padding-bottom:24px}
+.foot .mark{color:var(--company-ink)}
+.foot p{font-size:13.5px;color:var(--ink-2);max-width:92ch}
+.head .in{padding-top:64px;padding-bottom:48px}
+.head h1{font-size:clamp(32px,5vw,48px);line-height:1.08}
+.head .lede{margin-top:24px;max-width:68ch;font-size:17px;color:var(--appbar-ink-2);text-wrap:pretty}
+.facts{display:flex;flex-wrap:wrap;width:fit-content;max-width:100%;margin-top:32px;overflow:hidden;border:1px solid var(--appbar-line)}
+.facts>div{display:flex;flex-direction:column;gap:1px;margin:-1px 0 0 -1px;padding:9px 20px 10px;border-left:1px solid var(--appbar-line);border-top:1px solid var(--appbar-line)}
+.k{font-size:12.5px;color:var(--appbar-ink-2)}
+.v{font-weight:600}
+.doc{display:grid;grid-template-columns:232px minmax(0,1fr);column-gap:48px;padding-top:48px;padding-bottom:96px}
+.rail{position:sticky;top:24px;align-self:start;font-size:13.5px}
+.rail ol{list-style:none;border-top:2px solid var(--line-strong)}
+.rail a{display:grid;grid-template-columns:3ch 1fr;gap:8px;padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink-2);text-decoration:none}
+.rail a:hover{color:var(--ink)}
+.rail a span{color:var(--ink-2)}
+.notice{min-width:0}
+.notice section{padding:32px 0 40px;border-top:1px solid var(--line)}
+.notice section:first-child{padding-top:0;border-top:0}
+.notice h2{position:relative;font-size:26px;line-height:1.2}
+.notice h2 .n{position:absolute;right:100%;top:.42em;margin-right:14px;font-size:17px;font-weight:400;line-height:1;color:var(--ink-2)}
+.notice p,.notice ul{margin-top:16px;font-size:17px;max-width:68ch}
+.notice h2+p,.notice h2+ul,.notice h2+.tblbox{margin-top:24px}
+.notice ul{list-style:none;max-width:none}
+.notice li{padding:12px 0;border-bottom:1px solid var(--line);max-width:68ch}
+.notice ul li:first-child{border-top:2px solid var(--line-strong)}
+.notice ul.pairs li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr);column-gap:32px;max-width:none}
+.notice ul.pairs .lv{color:var(--ink-2)}
+.tblbox{margin-top:24px}
+.tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+.tbl th{text-align:left;vertical-align:bottom;font-weight:600;font-size:12.5px;color:var(--ink-2);padding:8px 16px 8px 0;border-bottom:2px solid var(--line-strong)}
+.tbl td,.tbl th[scope=row]{vertical-align:top;padding:14px 24px 16px 0;border-bottom:1px solid var(--line)}
+.tbl th[scope=row]{width:22%;font-size:14.5px;color:var(--ink)}
+.tbl td:last-child,.tbl th:last-child{padding-right:0}
+@media (max-width:980px){
+.doc{grid-template-columns:minmax(0,1fr)}
+.rail{position:static;margin-bottom:48px}
+.notice h2{display:grid;grid-template-columns:3ch 1fr;gap:8px}
+.notice h2 .n{position:static;margin:0;padding-top:.42em}
+}
+@media (max-width:760px){
+.hero .in{grid-template-columns:minmax(0,1fr);row-gap:48px;min-height:0;padding-top:48px;padding-bottom:48px}
+.hero .sym{grid-row:1;width:96px}
+.course{grid-template-columns:minmax(0,1fr)}
+.notice ul.pairs li{grid-template-columns:minmax(0,1fr);row-gap:2px}
+.tbl,.tbl tbody,.tbl tr,.tbl td,.tbl th[scope=row]{display:block;width:auto}
+.tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.tbl tr{padding:16px 0;border-bottom:1px solid var(--line)}
+.tbl tbody tr:first-child{border-top:2px solid var(--line-strong)}
+.tbl td,.tbl th[scope=row]{padding:0;border:0}
+.tbl th[scope=row]{font-size:17px;margin-bottom:12px}
+.tbl td{margin-top:12px}
+.tbl td::before{content:attr(data-th);display:block;font-size:12.5px;color:var(--ink-2)}
+}
+@media (max-width:520px){
+.bar nav{gap:16px}
+.in{padding-left:16px;padding-right:16px}
+.tile{padding:12px 16px;font-size:14.5px}
+}
+@media print{
+:root{--bg:#ffffff;--surface:#fbfdfe;--surface-2:#e3e8f0;--line:#c8ced7;--line-strong:#596475;--ink:#0e1626;--ink-2:#444d5e;--accent-ink:#1043a8;--focus:#235bc8;--company-ink:#0c2352;color-scheme:light}
+.wall{background:none;color:var(--ink)}
+.bar{border-bottom:1px solid var(--line-strong)}
+.bar nav,.rail,.skip{display:none}
+.line,.hero .sym{color:var(--company-ink);fill:var(--company-ink)}
+.head .lede,.hero .lede,.k{color:var(--ink-2)}
+.facts,.facts>div{border-color:var(--line-strong)}
+.doc{display:block;padding-top:24px}
+.notice section{break-inside:avoid-page}
+a{color:var(--ink)}
+}</style>
 </head>
 <body>
-<main>
-<h1>Blue Space AI Limited</h1>
-<p>We build Brick House, a record and coordination system for neonatal transport services and neonatal units.</p>
-<h2>Company details</h2>
-<dl>
-<dt>Registered in England and Wales</dt><dd>Company number 16173984</dd>
-<dt>Registered office</dt><dd>Mayes House, Vansittart Estate, Windsor, SL4 1SE</dd>
-<dt>Information Commissioner's Office registration</dt><dd>ZC293021</dd>
-</dl>
-<h2>Contact</h2>
-<p>Email <a href="mailto:burak@blue-space-ai.com">burak@blue-space-ai.com</a>.</p>
-<p>About your personal data, email <a href="mailto:security@bluespaceportal.com">security@bluespaceportal.com</a>, or read our <a href="privacy.html">privacy notice</a>.</p>
-<footer>Blue Space AI Limited, registered in England and Wales, company 16173984.</footer>
+<a class='skip' href='#main'>Skip to the page</a>
+<header class='wall bar'><div class='in'><a class='line' href='index.html' aria-label='Blue Space, home'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill-rule='evenodd' d='M5.000 0.000L20.500 0.000A3.500 3.500 0 0 1 24.000 3.500L24.000 9.000A0.750 0.750 0 0 1 23.250 9.750L21.750 9.750A0.750 0.750 0 0 0 21.000 10.500L21.000 13.500A0.750 0.750 0 0 0 21.750 14.250L23.250 14.250A0.750 0.750 0 0 1 24.000 15.000L24.000 20.500A3.500 3.500 0 0 1 20.500 24.000L5.000 24.000A5.000 5.000 0 0 1 0.000 19.000L0.000 5.000A5.000 5.000 0 0 1 5.000 0.000ZM6.500 4.500L18.750 4.500A0.750 0.750 0 0 1 19.500 5.250L19.500 9.000A0.750 0.750 0 0 1 18.750 9.750L10.500 9.750A0.750 0.750 0 0 0 9.750 10.500L9.750 13.500A0.750 0.750 0 0 0 10.500 14.250L18.750 14.250A0.750 0.750 0 0 1 19.500 15.000L19.500 18.750A0.750 0.750 0 0 1 18.750 19.500L6.500 19.500A2.000 2.000 0 0 1 4.500 17.500L4.500 6.500A2.000 2.000 0 0 1 6.500 4.500Z'/></svg><span class='mark'>BLUE<b>SPACE</b></span></a><nav aria-label='Site'><a href='privacy.html'>Privacy notice</a><a href='#contact'>Contact</a></nav></div></header>
+<main id='main'>
+<div class='wall hero'><div class='in'><div><h1>We build Brick House.</h1><p class='lede'>A record and coordination system for neonatal transport services and neonatal units.</p></div><svg class='sym' viewBox='0 0 24 24' aria-hidden='true'><path fill-rule='evenodd' d='M5.000 0.000L20.500 0.000A3.500 3.500 0 0 1 24.000 3.500L24.000 9.000A0.750 0.750 0 0 1 23.250 9.750L21.750 9.750A0.750 0.750 0 0 0 21.000 10.500L21.000 13.500A0.750 0.750 0 0 0 21.750 14.250L23.250 14.250A0.750 0.750 0 0 1 24.000 15.000L24.000 20.500A3.500 3.500 0 0 1 20.500 24.000L5.000 24.000A5.000 5.000 0 0 1 0.000 19.000L0.000 5.000A5.000 5.000 0 0 1 5.000 0.000ZM6.500 4.500L18.750 4.500A0.750 0.750 0 0 1 19.500 5.250L19.500 9.000A0.750 0.750 0 0 1 18.750 9.750L10.500 9.750A0.750 0.750 0 0 0 9.750 10.500L9.750 13.500A0.750 0.750 0 0 0 10.500 14.250L18.750 14.250A0.750 0.750 0 0 1 19.500 15.000L19.500 18.750A0.750 0.750 0 0 1 18.750 19.500L6.500 19.500A2.000 2.000 0 0 1 4.500 17.500L4.500 6.500A2.000 2.000 0 0 1 6.500 4.500Z'/></svg></div></div>
+<nav class='course in' id='contact' aria-label='Contact and privacy'><a class='tile' href='mailto:contact@blue-space-ai.com'><span class='tic'><svg class='i' viewBox='0 0 24 24' aria-hidden='true'><path d='M3 6h18v12H3zM3 7l9 6 9-6'/></svg></span><span class='lab'><small>Email</small>contact@blue-space-ai.com</span><svg class='i' viewBox='0 0 24 24' aria-hidden='true'><path d='M5 12h14M13 6l6 6-6 6'/></svg></a><a class='tile' href='privacy.html'><span class='tic'><svg class='i' viewBox='0 0 24 24' aria-hidden='true'><path d='M6 3h9l4 4v14H6zM15 3v4h4M9 12h6M9 16h6'/></svg></span><span class='lab'><small>How we use personal data</small>Privacy notice</span><svg class='i' viewBox='0 0 24 24' aria-hidden='true'><path d='M5 12h14M13 6l6 6-6 6'/></svg></a></nav>
 </main>
+<footer class='foot'><div class='in'><span class='mark'>BLUE<b>SPACE</b></span><p>Blue Space AI Limited. Registered in England and Wales, company number 16173984. Registered office: Mayes House, Vansittart Estate, Windsor SL4&nbsp;1SE.</p></div></footer>
 </body>
 </html>
